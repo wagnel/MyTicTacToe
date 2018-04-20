@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">My TicTacToe</string>
+    <string name="app_name">Tic-Tac-Toe</string>
     <string name="title">Elija su ficha</string>
     <string name="textCircle">Circulo</string>
     <string name="textCruz">Cruz</string>
