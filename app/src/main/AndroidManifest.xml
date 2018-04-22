@@ -4,7 +4,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/icono"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
@@ -17,10 +17,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".Juego" />
-        <activity android:name=".radioButton" />
-        <activity android:name=".Time" />
-        <activity android:name=".horaFecha" />
-        <activity android:name=".DateAndTime"></activity>
     </application>
 
 </manifest>

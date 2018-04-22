@@ -27,7 +27,7 @@ public class Juego extends AppCompatActivity {
 
         Intent receivedIntent = getIntent();
         Bundle ref = receivedIntent.getBundleExtra("reference");
-        usuario = (ref.get("order")=="1"?1:2);
+        usuario = (ref.get("orden")=="1"?1:2);
         ficha = ref.getString("ficha");
         rutaFicha = (ficha == "circle") ? R.mipmap.circle : R.mipmap.cruz;
 
