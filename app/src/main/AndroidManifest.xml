@@ -16,7 +16,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Juego"></activity>
+        <activity android:name=".Juego" />
+        <activity android:name=".radioButton" />
+        <activity android:name=".Time" />
+        <activity android:name=".horaFecha" />
+        <activity android:name=".DateAndTime"></activity>
     </application>
 
 </manifest>
