@@ -27,34 +27,27 @@ public class Juego extends AppCompatActivity {
 
         Intent receivedIntent = getIntent();
         Bundle ref = receivedIntent.getBundleExtra("reference");
-        usuario = (ref.getString("order")=="1") ? 1 : 2;
+        usuario = (ref.get("order")=="1"?1:2);
         ficha = ref.getString("ficha");
         rutaFicha = (ficha == "circle") ? R.mipmap.circle : R.mipmap.cruz;
-        Toast.makeText(this,random.nextInt(9)+"",Toast.LENGTH_SHORT).show();
-        //if (usuario == 2)
-            //primeraJugadaMaquina(random.nextInt());
+
+        if (cantJugadas == 0) {
+            primeraJugadaMaquina(random.nextInt(1));
+        }
+        estadoJugada = 1;
+        cantJugadas++;
     }
 
-    // Este metodo recibe el cuadro que es clickable
+    // Este metodo recibe el cuadro que es clickable por el usuario
     public void onGame(View view) {
-        // Si es la maquina la que juega primero
-        if (usuario == 2) {
-            if (cantJugadas == 0) {
-                primeraJugadaMaquina(random.nextInt());
-            }
-            estadoJugada = 1;
-            cantJugadas++;
-        }
-
-        if (estadoJugada == 1){
-            jugadaUsuario.add(view.getTag().toString());
-        }
-
+        jugadaUsuario.add(view.getTag().toString());
+        view.setBackgroundResource(R.mipmap.circle);
+        cantJugadas++;
     }
 
     private void primeraJugadaMaquina(int nr){
-        Toast.makeText(this,nr,Toast.LENGTH_SHORT).show();
         if (nr == 1) {
+            Toast.makeText(this,nr+"-ok",Toast.LENGTH_SHORT).show();
             findViewById(R.id.num1).setBackgroundResource(rutaFicha);
             jugadaMaquina.add("00");
         }

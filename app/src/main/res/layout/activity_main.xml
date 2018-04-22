@@ -16,59 +16,91 @@
             android:textStyle="bold" />
 
         <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
             android:layout_marginLeft="80dp"
             android:layout_marginStart="80dp"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="80dp"
             android:src="@mipmap/circle" />
+    <ImageView
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_marginLeft="70dp"
+        android:layout_marginStart="70dp"
+        android:layout_marginTop="150dp"
+        android:src="@mipmap/cruz" />
 
         <RadioGroup
-            android:layout_width="350dp"
-            android:layout_height="250dp"
-            android:layout_marginTop="80dp"
-            android:layout_centerHorizontal="true">
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="100dp"
+            android:layout_marginLeft="170dp">
 
             <RadioButton
                 android:id="@+id/radioBtnCircle"
                 android:layout_width="90dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="200dp"
-                android:layout_marginStart="200dp"
-                android:layout_marginTop="50dp"
                 android:text="@string/textCircle"/>
 
             <RadioButton
                 android:id="@+id/radioBtnCruz"
-                android:layout_width="90dp"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="200dp"
-                android:layout_marginStart="200dp"
-                android:layout_marginTop="90dp"
+                android:layout_marginTop="45dp"
                 android:text="@string/textCruz"/>
         </RadioGroup>
 
-        <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginLeft="80dp"
-            android:layout_marginStart="80dp"
-            android:layout_marginTop="220dp"
-            android:src="@mipmap/cruz" />
-
     <RelativeLayout
         android:layout_width="380dp"
-        android:layout_height="90dp"
+        android:layout_height="125dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="330dp"
+        android:layout_marginTop="295dp"
         android:background="#e4e6ff">
 
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="40dp"
+            android:src="@mipmap/jugador"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="35dp"
+            android:layout_marginLeft="40dp"
+            android:src="@mipmap/player1vsmaquina"/>
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="90dp">
+
+            <RadioButton
+                android:id="@+id/player1_vs_computer"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:textSize="18sp"
+                android:checked="true"
+                android:text="Player 1 vs. Computer"/>
+            <RadioButton
+                android:id="@+id/player1_vs_player2"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:textSize="18sp"
+                android:text="Player 1 vs. Player 2"/>
+        </RadioGroup>
+        <View
+            android:layout_width="350dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="65dp"
+            android:layout_centerHorizontal="true"
+            android:background="@android:color/holo_orange_dark"/>
         <ImageView
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginLeft="30dp"
             android:layout_marginStart="30dp"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="75dp"
             android:src="@mipmap/cool" />
 
         <CheckBox
@@ -78,7 +110,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="90dp"
             android:layout_marginStart="90dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="80dp"
             android:text="@string/textFirst"
             android:textColor="@android:color/black"
             android:textSize="18sp" />
@@ -93,24 +125,13 @@
         android:background="#7381ce">
 
         <ImageButton
-            android:id="@+id/btnConfig"
-            android:layout_width="90dp"
-            android:layout_height="90dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginLeft="1dp"
-            android:layout_marginStart="5dp"
-            android:src="@mipmap/settings"
-            android:background="#7381ce"/>
-        <ImageButton
             android:id="@+id/btnPlay"
-            android:layout_width="65dp"
-            android:layout_height="90dp"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
             android:layout_marginRight="1dp"
             android:layout_marginEnd="1dp"
-            android:src="@mipmap/play"
+            android:src="@mipmap/start"
             android:background="#7381ce"
             android:onClick="playGame"/>
 
