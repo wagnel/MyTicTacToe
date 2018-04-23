@@ -17,6 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".Juego" />
+        <activity android:name=".TIC"></activity>
     </application>
 
 </manifest>

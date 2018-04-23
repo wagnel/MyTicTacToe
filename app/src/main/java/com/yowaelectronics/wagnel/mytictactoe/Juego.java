@@ -1,89 +1,101 @@
 package com.yowaelectronics.wagnel.mytictactoe;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageButton;
 import android.widget.Toast;
-
 import java.util.ArrayList;
 import java.util.Random;
 
 public class Juego extends AppCompatActivity {
-    private Random random = new Random(9); // 9 posiciones tiene el Tic Tac Toe;
-    private String ficha = null;
-    private int rutaFicha = 0;
-    private int cantJugadas = 0; // Cantidad de jugadas que hacen los jugadores
-    private ArrayList<String> jugadaMaquina = new ArrayList<>(); // Lugares donde juega la maquina
-    private ArrayList<String> jugadaUsuario = new ArrayList<>(); // Lugares donde juega el usuario
-    private int usuario = 1; // Esta variable define si el usuario juega primero
-    private int estadoJugada = 0; // Esta variable define [0] si los dos ya hab jugado, [1] si todavia falta uno por jugar
+    private Random random = null;
+    private int rutaFichaPlayer1, rutaFichaPlayer2, currentPlayer, cantJugadas;
+    private ArrayList<String> jugadaPlayer1, // Almacenaje de cuadros donde juega el primer jugador
+                              jugadaPlayer2; // Almacenaje de cuadros donde juega el segundo jugador
+    private String ficha, modo;
+    private boolean isComputerFirstToPlay;
+    private Bundle ref = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_juego);
 
-        Intent receivedIntent = getIntent();
-        Bundle ref = receivedIntent.getBundleExtra("reference");
-        usuario = (ref.get("orden")=="1"?1:2);
-        ficha = ref.getString("ficha");
-        rutaFicha = (ficha == "circle") ? R.mipmap.circle : R.mipmap.cruz;
+        this.ref = getIntent().getBundleExtra("reference");
+        this.jugadaPlayer1 = new ArrayList<>();
+        this.jugadaPlayer2 = new ArrayList<>();
+        this.ficha = ref.getString("ficha");
+        this.modo = ref.getString("modo");
+        this.random = new Random(9); // 9 cuadros tiene el Tic Tac Toe;
+        this.isComputerFirstToPlay = (ref.getString("orden").equals("2")); // [1] Player 1 es el primero, [2] Computer es primero en jugar y retornara True
 
-        if (cantJugadas == 0) {
-            primeraJugadaMaquina(random.nextInt(1));
+        //Toast.makeText(this, "Logre entrar por fin", Toast.LENGTH_SHORT).show();
+
+        if ((modo.equals("1_vs_c")) && isComputerFirstToPlay) {
+            primeraJugadaMaquina(random.nextInt(5));
         }
-        estadoJugada = 1;
-        cantJugadas++;
     }
 
-    // Este metodo recibe el cuadro que es clickable por el usuario
+    // Este metodo recibe el cuadro que es clickable por el jugador
     public void onGame(View view) {
-        jugadaUsuario.add(view.getTag().toString());
-        view.setBackgroundResource(R.mipmap.circle);
+        // Solo almacena la ruta de la ficha seleccionada
+        if (ficha == "circle")
+            this.rutaFichaPlayer1 =  R.mipmap.circle;
+        else
+            this.rutaFichaPlayer2 = R.mipmap.cruz;
+
+        if (currentPlayer == 0) {
+            view.setBackgroundResource(rutaFichaPlayer1);
+            jugadaPlayer1.add(view.getTag().toString());
+            currentPlayer = 1;
+
+        }else{
+            view.setBackgroundResource(rutaFichaPlayer2);
+            jugadaPlayer2.add(view.getTag().toString());
+            currentPlayer = 0;
+        }
+
         cantJugadas++;
     }
 
     private void primeraJugadaMaquina(int nr){
         if (nr == 1) {
-            Toast.makeText(this,nr+"-ok",Toast.LENGTH_SHORT).show();
-            findViewById(R.id.num1).setBackgroundResource(rutaFicha);
-            jugadaMaquina.add("00");
+            findViewById(R.id.num1).setBackgroundResource(rutaFichaPlayer2);
+            jugadaPlayer2.add("00");
         }
         if (nr == 2) {
-            findViewById(R.id.num2).setBackgroundResource(rutaFicha);
-            jugadaMaquina.add("01");
+            findViewById(R.id.num2).setBackgroundResource(rutaFichaPlayer2);
+            jugadaPlayer2.add("01");
         }
         if (nr == 3) {
-            findViewById(R.id.num3).setBackgroundResource(rutaFicha);
-            jugadaMaquina.add("02");
+            findViewById(R.id.num3).setBackgroundResource(rutaFichaPlayer2);
+            jugadaPlayer2.add("02");
         }
 
         if (nr == 4) {
-            findViewById(R.id.num4).setBackgroundResource(rutaFicha);
-            jugadaMaquina.add("10");
+            findViewById(R.id.num4).setBackgroundResource(rutaFichaPlayer2);
+            jugadaPlayer2.add("10");
         }
         if (nr == 5) {
-            findViewById(R.id.num5).setBackgroundResource(rutaFicha);
-            jugadaMaquina.add("11");
+            findViewById(R.id.num5).setBackgroundResource(rutaFichaPlayer2);
+            jugadaPlayer2.add("11");
         }
         if (nr == 6) {
-            findViewById(R.id.num6).setBackgroundResource(rutaFicha);
-            jugadaMaquina.add("12");
+            findViewById(R.id.num6).setBackgroundResource(rutaFichaPlayer2);
+            jugadaPlayer2.add("12");
         }
 
         if (nr == 7) {
-            findViewById(R.id.num7).setBackgroundResource(rutaFicha);
-            jugadaMaquina.add("20");
+            findViewById(R.id.num7).setBackgroundResource(rutaFichaPlayer2);
+            jugadaPlayer2.add("20");
         }
         if (nr == 8) {
-            findViewById(R.id.num8).setBackgroundResource(rutaFicha);
-            jugadaMaquina.add("21");
+            findViewById(R.id.num8).setBackgroundResource(rutaFichaPlayer2);
+            jugadaPlayer2.add("21");
         }
         if (nr == 9) {
-            findViewById(R.id.num9).setBackgroundResource(rutaFicha);
-            jugadaMaquina.add("22");
+            findViewById(R.id.num9).setBackgroundResource(rutaFichaPlayer2);
+            jugadaPlayer2.add("22");
         }
     }
 }
