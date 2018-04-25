@@ -101,21 +101,22 @@ public class Juego extends AppCompatActivity {
     }
 
     private void verificarGanada(String player, String cuadro) {
-        if (cuadro == "00" || cuadro == "01" || cuadro == "02") ganada1.add(player);
-        if (cuadro == "00" || cuadro == "10" || cuadro == "20") ganada2.add(player);
-        if (cuadro == "00" || cuadro == "11" || cuadro == "22") ganada3.add(player);
-        if (cuadro == "01" || cuadro == "11" || cuadro == "21") ganada4.add(player);
-        if (cuadro == "02" || cuadro == "11" || cuadro == "20") ganada5.add(player);
-        if (cuadro == "02" || cuadro == "12" || cuadro == "22") ganada6.add(player);
-        if (cuadro == "10" || cuadro == "11" || cuadro == "12") ganada7.add(player);
-        if (cuadro == "20" || cuadro == "21" || cuadro == "22") ganada8.add(player);
+        if (cuadro.equals("00") || cuadro.equals("01") || cuadro.equals("02")) ganada1.add(player);
+        if (cuadro.equals("00") || cuadro.equals("10") || cuadro.equals("20")) ganada2.add(player);
+        if (cuadro.equals("00") || cuadro.equals("11") || cuadro.equals("22")) ganada3.add(player);
+        if (cuadro.equals("01") || cuadro.equals("11") || cuadro.equals("21")) ganada4.add(player);
+        if (cuadro.equals("02") || cuadro.equals("11") || cuadro.equals("20")) ganada5.add(player);
+        if (cuadro.equals("02") || cuadro.equals("12") || cuadro.equals("22")) ganada6.add(player);
+        if (cuadro.equals("10") || cuadro.equals("11") || cuadro.equals("12")) ganada7.add(player);
+        if (cuadro.equals("20") || cuadro.equals("21") || cuadro.equals("22")) ganada8.add(player);
         obtenerGanador();
     }
     private void obtenerGanador(){
         if (cantJugadas == 4){
-            if (ganada1.get(1) == "p1" && ganada1.get(1) == "p1" && ganada1.get(2) == "p1")
+            //Toast.makeText(this,ganada1.get(0)+" : "+ganada1.get(1)+" : "+ganada1.get(1), Toast.LENGTH_SHORT).show();
+            if (ganada1.get(0).equals("p1") && ganada1.get(1).equals("p1") && ganada1.get(1).equals("p1"))
                 Toast.makeText(this,"Player 1 es el ganador! Felicidades", Toast.LENGTH_SHORT).show();
-            else
+            else if (ganada1.get(0).equals("p2") && ganada1.get(1).equals("p2") && ganada1.get(1).equals("p2"))
                 Toast.makeText(this,"Player 2 es el ganador! Felicidades", Toast.LENGTH_SHORT).show();
 
             /*if (ganada2.get(0) == "p1" && ganada2.get(1) == "p1" && ganada2.get(2) == "p1") Toast.makeText(this,p1+"es el ganador! Felicidades", Toast.LENGTH_SHORT).show(); else Toast.makeText(this,p2+"es el ganador! Felicidades", Toast.LENGTH_SHORT).show();
