@@ -45,5 +45,7 @@ public class MainActivity extends AppCompatActivity {
             chFirstToPlay.setEnabled(true);
         else
             chFirstToPlay.setEnabled(false);
+
+        orden.setChecked(true);
     }
 }
